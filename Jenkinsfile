@@ -20,10 +20,18 @@ pipeline {
                 '''
             }
         }
-        stage('test') {
-             agent {
-                docker {   
-                    echo 'Test stage'              
+
+        stage('Test') {  // Richtig geschriebene Stage
+            agent {
+                docker {
+                    image 'node:18-alpine'
+                    reuseNode true
+                }
+            }
+            steps {
+                echo 'Test stage'
+                sh 'npm test'  // Beispiel für einen echten Testschritt
+            }
         }
     }
 }
