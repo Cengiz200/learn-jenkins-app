@@ -20,5 +20,10 @@ pipeline {
                 '''
             }
         }
+        stage('test') {
+             agent {
+                docker {   
+                    echo 'Test stage'              
+        }
     }
 }
