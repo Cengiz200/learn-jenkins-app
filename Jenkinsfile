@@ -28,9 +28,12 @@ pipeline {
                     reuseNode true
                 }
             }
+
             steps {
-                echo 'Test stage'
-                sh 'npm test'  // Beispiel für einen echten Testschritt
+                sh '''
+                test -f build/index.html
+                npm test
+                '''
             }
         }
     }
